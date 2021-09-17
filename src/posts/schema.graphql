@@ -13,9 +13,9 @@ input NewPost {
 
 input UpdatePost {
   id: ID!
-  title: String!
-  content: String!
-  published: Boolean!
+  title: String
+  content: String
+  published: Boolean
 }
 
 type Query {
@@ -24,7 +24,7 @@ type Query {
 }
 
 type Mutation {
-  createPost(post: NewPost): Post!
-  updatePost(post: UpdatePost): Post
+  createPost(input: NewPost): Post!
+  updatePost(input: UpdatePost): Post
   deletePost(id: ID!): Post
 }
