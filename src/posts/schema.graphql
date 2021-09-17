@@ -25,6 +25,6 @@ type Query {
 
 type Mutation {
   createPost(post: NewPost): Post!
-  UpdatePost(post: UpdatePost): Post
+  updatePost(post: UpdatePost): Post
   deletePost(id: ID!): Post
 }

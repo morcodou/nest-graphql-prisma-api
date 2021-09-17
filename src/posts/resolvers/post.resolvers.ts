@@ -1,34 +1,34 @@
 import { Args, Resolver, Query, Mutation } from '@nestjs/graphql';
 import { NewPost, UpdatePost } from 'src/graphql';
-import { PostsService } from 'src/services/posts.service';
+import { PostService } from 'src/posts/services/post.service';
 
 @Resolver('Post')
 export class PostResolvers {
-    constructor(private readonly postService: PostsService) {
+    constructor(private readonly postService: PostService) {
     }
 
     @Query('post')
     async post(@Args('id') args: string) {
-        this.postService.post(args);
+        return this.postService.post(args);
     }
 
     @Query('posts')
     async posts() {
-        this.postService.posts();
+        return this.postService.posts();
     }
 
     @Mutation('createPost')
     async create(@Args('input') args: NewPost) {
-        this.postService.createPost(args);
+        return this.postService.createPost(args);
     }
 
     @Mutation('updatePost')
     async update(@Args('input') args: UpdatePost) {
-        this.postService.updatePost(args);
+        return this.postService.updatePost(args);
     }
 
     @Mutation('deletePost')
     async delete(@Args('id') args: string) {
-        this.postService.delete(args);
+        return this.postService.delete(args);
     }
 }

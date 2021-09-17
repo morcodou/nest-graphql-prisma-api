@@ -1,13 +1,18 @@
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaService } from './services/prisma.service';
-import { PostsService } from './services/posts.service';
-import { PostResolvers } from './resolvers/post.resolvers';
+import { PostModule } from './posts/posts.module';
 
 @Module({
-  imports: [],
+  imports: [
+    PostModule,
+    GraphQLModule.forRoot({
+      typePaths: ['./**/*.graphql']
+    })],
+
   controllers: [AppController],
-  providers: [AppService, PrismaService, PostsService, PostResolvers],
+
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

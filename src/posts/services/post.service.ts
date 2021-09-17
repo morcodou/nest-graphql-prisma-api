@@ -4,7 +4,7 @@ import { NewPost, UpdatePost } from 'src/graphql';
 import { PrismaService } from './prisma.service';
 
 @Injectable()
-export class PostsService {
+export class PostService {
 
     constructor(private prisma: PrismaService) {
     }
